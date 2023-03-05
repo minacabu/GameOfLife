@@ -1,7 +1,8 @@
 package Gol;
+import java.util.Locale;
 import java.util.Random;
 public class Settings {
-    protected int w, h, g, s, count, cellscount;
+    protected int w, h, g, s;
     protected String p;
     protected char[] value;
     protected int[][] grid;
@@ -9,8 +10,6 @@ public class Settings {
     int randGrid;
     String RED = "\033[0;31m";
     String ANSI_RESET = "\u001B[0m";
-
-
     public Settings(int w, int h, int g, int s, String p) {
         this.w = w;
         this.h = h;
@@ -21,7 +20,7 @@ public class Settings {
         this.value = p.toCharArray();
     }
     public void convert() throws InterruptedException {
-        if (p.equals("rnd")) {
+        if (p.toLowerCase(Locale.ROOT).equals("rnd")) {
             System.out.println("initial grid: ");
             for (int i = 0; i < w; i++) {
                 for (int j = 0; j < h; j++) {
@@ -29,7 +28,7 @@ public class Settings {
                     if (grid[i][j] == 0)
                         System.out.print(".\t");
                     else
-                        System.out.print(RED+"*\t"+ANSI_RESET);
+                        System.out.print(RED+"█\t"+ANSI_RESET);
                 }
                 System.out.println();
             }
@@ -46,8 +45,10 @@ public class Settings {
                         colum++;
                     }
                     case '1' -> {
-                        grid[row][colum] = 1;
-                        colum++;
+                        try {
+                            grid[row][colum] = 1;
+                            colum++;
+                        }catch (ArrayIndexOutOfBoundsException a){}
                     }
                     case '#' -> {
                         colum = 0;
@@ -61,7 +62,7 @@ public class Settings {
                     if (grid[i][j] == 0)
                         System.out.print(".\t");
                     else
-                        System.out.print(RED+"*\t"+ANSI_RESET);
+                        System.out.print(RED+"█\t"+ANSI_RESET);
                 }
                 System.out.println();
             }

@@ -3,11 +3,12 @@ public class Rules extends Settings{
     public Rules(int w, int h, int g, int s, String p) {
         super(w, h, g, s, p);
     }
+    int count =1;
     public void Run(int[][] grid) throws InterruptedException {
         int[][] nextGrid = new int[w][h];
         String RED = "\033[0;31m";
         String ANSI_RESET = "\u001B[0m";
-        cellscount=0;
+        int cellscount=0;
         for (int l = 0; l < w; l++) {
             for (int m = 0; m < h; m++) {
                 if(grid[l][m]==1)
@@ -35,13 +36,13 @@ public class Rules extends Settings{
                 for (int x = 0; x < w; x++) {
                     for (int y = 0; y < h; y++) {
                         if (nextGrid[x][y] == 0)
-                            System.out.print(".t");
+                            System.out.print(".\t");
                         else
-                            System.out.print(RED+"*\t"+ANSI_RESET);
+                            System.out.print(RED + "█\t" + ANSI_RESET);
                     }
                     System.out.println();
-                    count ++;
-                }Run(nextGrid);
+                }count ++;
+                Run(nextGrid);
             default:
                 if(count<=g) {
                     Thread.sleep(s);
@@ -51,13 +52,13 @@ public class Rules extends Settings{
                             if (nextGrid[x][y] == 0)
                                 System.out.print(".\t");
                             else
-                                System.out.print(RED+"*\t"+ANSI_RESET);
+                                System.out.print(RED+"█\t"+ANSI_RESET);
                         }
                         System.out.println();
                     }
                     count++;
                     Run(nextGrid);
                 }
-        }
+             }
+         }
     }
-}
