@@ -1,6 +1,4 @@
 package Gol;
-import java.util.Scanner;
-
 public class Param {
     public int w, h, g, s;
     public String p;
@@ -22,8 +20,6 @@ public class Param {
                         }else{error();}
                     }else{error();}
         }else{error();}}
-
-    public static void error() throws InterruptedException {
+    public static void error(){
         System.out.println("\nYou insert a invalid value, please try again\n");
-    }
-}
+        System.exit(0);}}

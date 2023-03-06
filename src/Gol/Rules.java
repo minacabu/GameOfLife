@@ -8,11 +8,11 @@ public class Rules extends Settings{
         int[][] nextGrid = new int[w][h];
         String RED = "\033[0;31m";
         String ANSI_RESET = "\u001B[0m";
-        int cellscount=0;
+        int cellsCount=0;
         for (int l = 0; l < w; l++) {
             for (int m = 0; m < h; m++) {
                 if(grid[l][m]==1)
-                    cellscount++;
+                    cellsCount++;
                 int neighbours = 0;
                 for (int i = -1; i <= 1; i++)
                     for (int j = -1; j <= 1; j++)
@@ -32,7 +32,7 @@ public class Rules extends Settings{
         switch (g){
             case 0:
                 Thread.sleep(s);
-                System.out.println("\nGeneration " + count + " Cells alive: " + cellscount + " Seconds: " + s);
+                System.out.println("\nGeneration " + count + " Cells alive: " + cellsCount + " Seconds: " + s);
                 for (int x = 0; x < w; x++) {
                     for (int y = 0; y < h; y++) {
                         if (nextGrid[x][y] == 0)
@@ -46,7 +46,7 @@ public class Rules extends Settings{
             default:
                 if(count<=g) {
                     Thread.sleep(s);
-                    System.out.println("\nGeneration " + count + " Cells alive: " + cellscount + " Seconds: " + s);
+                    System.out.println("\nGeneration " + count + " Cells alive: " + cellsCount + " Seconds: " + s);
                     for (int x = 0; x < w; x++) {
                         for (int y = 0; y < h; y++) {
                             if (nextGrid[x][y] == 0)

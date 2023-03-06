@@ -7,7 +7,6 @@ public class Settings {
     protected char[] value;
     protected int[][] grid;
     Random rand = new Random();
-    int randGrid;
     String RED = "\033[0;31m";
     String ANSI_RESET = "\u001B[0m";
     public Settings(int w, int h, int g, int s, String p) {
@@ -24,7 +23,7 @@ public class Settings {
             System.out.println("initial grid: ");
             for (int i = 0; i < w; i++) {
                 for (int j = 0; j < h; j++) {
-                    grid[i][j] = (randGrid = rand.nextInt(2));
+                    grid[i][j] = (rand.nextInt(2));
                     if (grid[i][j] == 0)
                         System.out.print(".\t");
                     else
@@ -38,8 +37,8 @@ public class Settings {
         } else {
             int row = 0;
             int colum = 0;
-            for (char vaul : value) {
-                switch (vaul) {
+            for (char vault : value) {
+                switch (vault) {
                     case '0' -> {
                         grid[row][colum] = 0;
                         colum++;
@@ -48,7 +47,7 @@ public class Settings {
                         try {
                             grid[row][colum] = 1;
                             colum++;
-                        }catch (ArrayIndexOutOfBoundsException a){}
+                        }catch (ArrayIndexOutOfBoundsException ignored){}
                     }
                     case '#' -> {
                         colum = 0;
